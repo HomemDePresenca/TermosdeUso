@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos de Uso | Código da Atração</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* RESET & BASE STYLES */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --bg-deep: #050505;
+            --bg-card: #0a0a0a;
+            --red-main: #C1121F;
+            --red-dusk: #8A1018;
+            --red-glow: #E63946;
+            --white-main: #F5F5F5;
+            --white-sec: #A3A3A3;
+            --font-heading: 'Bebas Neue', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-deep);
+            color: var(--white-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            padding-top: 20px;
+        }
+
+        /* VINHETA & PROFUNDIDADE */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            background: radial-gradient(circle at center, transparent 35%, rgba(0,0,0,.85) 100%);
+        }
+
+        /* BACKGROUND VIVO */
+        .ambient-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -3;
+            background: radial-gradient(circle at 50% 30%, #110507 0%, var(--bg-deep) 80%);
+        }
+
+        .ambient-glow {
+            position: absolute;
+            top: -10%; left: 50%;
+            width: 150vw; height: 60vh;
+            background: radial-gradient(circle, rgba(193, 18, 31, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+            animation: drift 15s ease-in-out infinite alternate;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(-50%, 0) scale(1); }
+            100% { transform: translate(-48%, 5%) scale(1.15); }
+        }
+
+        /* PARTÍCULAS TEMÁTICAS */
+        .particles-container { position: fixed; inset: 0; z-index: -2; overflow: hidden; pointer-events: none; }
+        .particle {
+            position: absolute; color: var(--red-main); opacity: 0;
+            filter: blur(2px) drop-shadow(0 0 8px rgba(193,18,31,0.6));
+            animation: floatSymbol infinite linear;
+        }
+        .p1 { left: 15%; animation-duration: 18s; font-size: 28px; animation-delay: 0s; }
+        .p2 { left: 85%; animation-duration: 24s; font-size: 22px; animation-delay: 4s; }
+        .p3 { left: 45%; animation-duration: 20s; font-size: 34px; animation-delay: 8s; filter: blur(4px); }
+        .p4 { left: 75%; animation-duration: 22s; font-size: 18px; animation-delay: 2s; }
+        .p5 { left: 20%; animation-duration: 26s; font-size: 26px; animation-delay: 12s; }
+        .p6 { left: 60%; animation-duration: 19s; font-size: 20px; animation-delay: 6s; }
+
+        @keyframes floatSymbol {
+            0% { transform: translateY(110vh) rotate(0deg) scale(0.8); opacity: 0; }
+            15% { opacity: 0.15; }
+            85% { opacity: 0.15; }
+            100% { transform: translateY(-10vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+
+        .cinematic-grain {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; opacity: 0.05; pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* LAYOUT GERAL */
+        .wrapper {
+            max-width: 500px; margin: 0 auto; padding: 40px 24px 120px 24px; position: relative;
+        }
+
+        h1, h2, h3 { font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 1px; }
+
+        .section-divider {
+            width: 100px; height: 1px; margin: 40px auto;
+            background: linear-gradient(90deg, transparent, rgba(193,18,31,.5), transparent);
+        }
+
+        /* ESTILOS DO TEXTO JURÍDICO */
+        .policy-header { text-align: center; margin-bottom: 40px; }
+        .policy-header h1 { font-size: 52px; line-height: 0.9; margin-bottom: 12px; }
+        .policy-header h1 span.white { display: block; background: linear-gradient(180deg, #fff, #999); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .policy-header h1 span.red { display: block; color: var(--red-main); text-shadow: 0 0 30px rgba(193, 18, 31, 0.4); }
+        .policy-header .last-update { font-size: 13px; color: var(--white-sec); font-style: italic; }
+
+        .policy-body p { font-size: 15px; color: var(--white-sec); margin-bottom: 20px; line-height: 1.6; }
+        .policy-body p strong { color: var(--white-main); font-weight: 600; }
+        
+        .policy-section { margin-bottom: 35px; }
+        .policy-section h2 { font-size: 24px; color: #fff; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+        .policy-section h2 span { color: var(--red-main); }
+
+        /* LISTAS DAS DIRETRIZES */
+        .policy-list { list-style: none; padding: 0; margin: 16px 0; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); padding: 20px; border-radius: 10px; }
+        .policy-list li { position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 14px; color: var(--white-sec); line-height: 1.5; }
+        .policy-list li:last-child { margin-bottom: 0; }
+        .policy-list li::before {
+            content: '▪'; position: absolute; left: 4px; top: -1px; color: var(--red-main); font-size: 16px;
+        }
+
+        /* ELEMENTOS DE CONTATO DISFARÇADOS */
+        .disguised-channels {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .disguised-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(10, 10, 10, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 14px 16px;
+            border-radius: 8px;
+            color: var(--white-sec);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .disguised-link svg {
+            width: 18px;
+            height: 18px;
+            fill: rgba(163, 163, 163, 0.4); /* Cor cinza padrão para disfarçar */
+            transition: all 0.3s ease;
+        }
+
+        /* Efeito hover elegante e discreto mantendo o tema do site */
+        .disguised-link:hover {
+            border-color: rgba(193, 18, 31, 0.3);
+            color: var(--white-main);
+            background: rgba(193, 18, 31, 0.02);
+        }
+
+        .disguised-link:hover svg {
+            fill: var(--red-main); /* Acende em vermelho sutil ao interagir */
+            filter: drop-shadow(0 0 4px var(--red-main));
+        }
+
+        /* ANIMAÇÕES */
+        .scroll-reveal { opacity: 0; transform: translateY(25px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .scroll-reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* FOOTER INSTITUCIONAL */
+        .footer { text-align: center; padding: 40px 0 20px; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 40px; }
+        .footer p { font-size: 12px; color: #555; line-height: 1.5; margin-bottom: 10px; }
+        .footer a { color: #888; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.3s; }
+        .footer a:hover { border-color: #888; }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-bg"><div class="ambient-glow"></div></div>
+    <div class="particles-container">
+        <div class="particle p1">⚥</div>
+        <div class="particle p2">♥</div>
+        <div class="particle p3">♀</div>
+        <div class="particle p4">♂</div>
+        <div class="particle p5">♥</div>
+        <div class="particle p6">⚥</div>
+    </div>
+    <div class="cinematic-grain"></div>
+
+    <div class="wrapper">
+        
+        <header class="policy-header scroll-reveal active">
+            <h1>
+                <span class="white">Termos</span>
+                <span class="red">de Uso</span>
+            </h1>
+            <div class="last-update">Última atualização: 01/06/2026</div>
+        </header>
+
+        <main class="policy-body">
+            
+            <p class="scroll-reveal active">Ao adquirir e acessar este produto digital, você concorda com os presentes Termos de Uso. Leia atentamente as condições abaixo antes de utilizar o conteúdo disponibilizado.</p>
+
+            <div class="section-divider"></div>
+
+            <section class="policy-section scroll-reveal">
+                <h2><span>1.</span> Aceitação dos Termos</h2>
+                <p>Ao realizar a compra e utilizar o produto, você declara ter lido, compreendido e aceitado integralmente estes Termos de Uso.</p>
+            </section>
+
+            <section class="policy-section scroll-reveal">
+                <h2><span>2.</span> Licença de Uso</h2>
+                <p>A aquisição do produto concede ao comprador uma licença de uso pessoal, individual, limitada, não exclusiva e intransferível.</p>
+                <p>O acesso ao conteúdo é destinado exclusivamente ao usuário que realizou a compra, sendo proibido:</p>
+                <ul class="policy-list">
+                    <li>Compartilhar login e senha com terceiros;</li>
+                    <li>Revender, sublicenciar ou redistribuir o conteúdo;</li>
+                    <li>Copiar, reproduzir ou disponibilizar o material publicamente;</li>
+                    <li>Utilizar o conteúdo para fins comerciais sem autorização expressa.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section scroll-reveal">
+                <h2><span>3.</span> Propriedade Intelectual</h2>
+                <p>Todo o conteúdo disponibilizado, incluindo textos, vídeos, imagens, áudios, materiais complementares, marcas, logotipos e demais elements, é protegido pelas leis de propriedade intelectual e direitos autorais.</p>
+                <p>Nenhuma parte do material poderá ser reproduzida, distribuída ou utilizada sem autorização prévia e por escrito do titular dos direitos.</p>
+            </section>
+
+            <section class="policy-section scroll-reveal">
+                <h2><span>4.</span> Acesso ao Produto</h2>
+                <p>O acesso será disponibilizado após a confirmação do pagamento, por meio da plataforma ou sistema indicado no momento da compra.</p>
+                <p>O usuário é responsável por manter a confidencialidade de suas credenciais de acesso.</p>
+            </section>
+
+            <section class="policy-section scroll-reveal">
+                <h2><span>5.</span> Responsabilidades do Usuário</h2>
+                <p>O usuário compromete-se a:</p>
+                <ul class="policy-list">
+                    <li>Utilizar o conteúdo de forma ética e legal;</li>
+                    <li>Não praticar atividades que possam prejudicar a plataforma ou terceiros;</li>
+                    <li>Fornecer informações corretas e atualizadas quando necessário;</li>
+                    <li>Respeitar os direitos autorais e as condições de uso estabelecidas.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section scroll-reveal">
+                <h2><span>6.</span> Limitação de Responsabilidade</h2>
+                <p>O conteúdo disponibilizado possui caráter exclusivamente educacional e informativo.</p>
+                <p>Os resultados obtidos a partir da aplicação das informações dependem de diversos fatores individuais, não sendo garantidos resultados específicos.</p>
+                <p>O fornecedor não se responsabiliza por decisões, ações ou consequências decorrentes da utilização do conteúdo.</p>
+            </section>
+
+            <section class="policy-section scroll-reveal">
+                <h2><span>7.</span> Atualizações e Modificações</h2>
+                <p>O conteúdo, estrutura, recursos e funcionalidades poderão ser atualizados, modificados ou removidos a qualquer momento, sem necessidade de aviso prévio, visando melhorias na experiência dos usuários.</p>
+            </section>
+
+            <section class="policy-section scroll-reveal">
+                <h2><span>8.</span> Suspensão ou Cancelamento</h2>
+                <p>O acesso poderá ser suspenso ou cancelado, sem reembolso, caso seja identificado:</p>
+                <ul class="policy-list">
+                    <li>Compartilhar indevido de acesso;</li>
+                    <li>Violação destes Termos de Uso;</li>
+                    <li>Uso fraudulento ou ilegal do conteúdo;</li>
+                    <li>Tentativas de copiar, distribuir ou comercializar o material sem autorização.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section scroll-reveal">
+                <h2><span>9.</span> Privacidade</h2>
+                <p>As informações fornecidas pelo usuário serão tratadas de acordo com a Política de Privacidade aplicável, respeitando a legislação vigente de proteção de dados.</p>
+            </section>
+
+            <section class="policy-section scroll-reveal">
+                <h2><span>10.</span> Alterações dos Termos</h2>
+                <p>Estes Termos de Uso poderão ser alterados a qualquer momento. A versão mais recente estará sempre disponível para consulta.</p>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <section class="policy-section scroll-reveal">
+                <h2><span>11.</span> Contato</h2>
+                <p>Em caso de dúvidas, solicitações ou suporte, entre em contato pelos canais oficiais de atendimento disponibilizados na plataforma:</p>
+                
+                <div class="disguised-channels">
+                    <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="disguised-link">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.503-5.731-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.963C16.528 1.981 14.063.96 11.435.96c-5.443 0-9.866 4.372-9.87 9.802 0 1.68.463 3.315 1.34 4.76l-.997 3.636 3.739-.966zm11.366-5.46c-.312-.153-1.848-.894-2.133-.995-.285-.102-.492-.153-.7.153-.207.306-.804.995-.984 1.198-.181.204-.363.229-.675.076-1.54-.757-2.584-1.309-3.616-3.053-.272-.46.272-.426.78-1.413.085-.17.043-.319-.021-.446-.064-.127-.57-1.352-.78-1.848-.205-.493-.41-.423-.57-.431-.148-.007-.319-.009-.49-.009-.17 0-.448.063-.682.312-.234.248-.894.861-.894 2.1s.914 2.436 1.041 2.6c.128.165 1.8 2.709 4.362 3.793.61.258 1.085.412 1.457.528.614.193 1.173.166 1.615.101.493-.072 1.848-.744 2.111-1.427.262-.682.262-1.266.183-1.39-.078-.124-.286-.203-.597-.356z"/>
+                        </svg>
+                        <span>Central de Atendimento via Mensagem</span>
+                    </a>
+
+                    <a href="https://instagram.com/seu_perfil" target="_blank" rel="noopener" class="disguised-link">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.073-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                        </svg>
+                        <span>Painel de Atualizações Institucionais</span>
+                    </a>
+                </div>
+            </section>
+
+            <p class="scroll-reveal" style="margin-top: 30px;">Ao adquirir e utilizar este produto digital, o usuário declara estar de acordo com todos os termos e condições descritos neste documento.</p>
+
+        </main>
+
+        <footer class="footer scroll-reveal">
+            <p><strong>Homem De Presença</strong> © 2026. Todos os direitos reservados.</p>
+            <p>Este site não faz parte do site do Facebook ou da Meta Platforms, Inc. Além disso, este site NÃO é endossado pelo Facebook de nenhuma maneira.</p>
+            <p><a href="#">Termos de Uso</a> | <a href="#">Política de Privacidade</a></p>
+        </footer>
+
+    </div>
+
+    <script>
+        // SCROLL REVEAL (Exatamente igual à lógica do seu site principal)
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const revealPoint = 50;
+            revealElements.forEach(el => {
+                const revealTop = el.getBoundingClientRect().top;
+                if (revealTop < windowHeight - revealPoint) {
+                    el.classList.add('active');
+                }
+            });
+        };
+
+        // EVENTOS DE DISPARO DO CONTEÚDO
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
+</body>
+</html>
